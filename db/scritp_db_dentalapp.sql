@@ -8,7 +8,7 @@ CREATE TABLE usuarios (
   correo VARCHAR(50) DEFAULT NULL,
   llave VARCHAR(30) DEFAULT NULL,
   rol VARCHAR(30) DEFAULT NULL,
-  fecha_creacion VARCHAR(30) DEFAULT NULL,
+  fecha_creacion DATETIME DEFAULT NULL,
   id_usuario BINARY(16) NOT NULL,
   PRIMARY KEY(id)
 );
@@ -19,7 +19,7 @@ CREATE TABLE centros (
   telefono VARCHAR(10) DEFAULT NULL,
   correo VARCHAR(30) DEFAULT NULL,
   direccion VARCHAR(130) DEFAULT NULL,
-  fecha_creacion VARCHAR(30) DEFAULT NULL,
+  fecha_creacion DATETIME DEFAULT NULL,
   id_usuario BINARY(16) NOT NULL,
   PRIMARY KEY(id)
 );
