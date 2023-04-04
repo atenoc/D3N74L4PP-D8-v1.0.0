@@ -1,29 +1,48 @@
-CREATE DATABASE IF NOT EXISTS dentaldb
---CREATE DATABASE `dentaldb` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+--CREATE DATABASE IF NOT EXISTS dentaldb
+CREATE DATABASE IF NOT EXISTS dentaldb DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 
 USE dentaldb;
 
 CREATE TABLE usuarios (
   id BINARY(16) NOT NULL,
-  correo VARCHAR(50) DEFAULT NULL,
-  llave VARCHAR(30) DEFAULT NULL,
-  rol VARCHAR(30) DEFAULT NULL,
-  fecha_creacion DATETIME DEFAULT NULL,
+  correo VARCHAR(30) NOT NULL,
+  llave VARCHAR(30) NOT NULL,
+  rol VARCHAR(15) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
   id_usuario BINARY(16) NOT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
 
 CREATE TABLE centros (
   id BINARY(16) NOT NULL,
-  nombre VARCHAR(40) DEFAULT NULL,
-  telefono VARCHAR(10) DEFAULT NULL,
+  nombre VARCHAR(40) NOT NULL, 
+  telefono VARCHAR(10) NOT NULL,
   correo VARCHAR(30) DEFAULT NULL,
-  direccion VARCHAR(130) DEFAULT NULL,
-  fecha_creacion DATETIME DEFAULT NULL,
+  direccion VARCHAR(130) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
   id_usuario BINARY(16) NOT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
 
+CREATE TABLE personal (
+  id BINARY(16) NOT NULL,
+  titulo VARCHAR(5) NOT NULL,
+  nombre VARCHAR(40) NOT NULL,
+  apellidop VARCHAR(20) NOT NULL,  
+  apellidom VARCHAR(20) DEFAULT NULL,
+  especialidad VARCHAR(25) NOT NULL,
+  telefono VARCHAR(10) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
+  id_usuario BINARY(16) NOT NULL,
+  id_centro BINARY(16) NOT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+	#	Time	Action	Message	Duration / Fetch
+0	1	18:40:08	CREATE DATABASE IF NOT EXISTS dentaldb CHARACTER SET utf8 COLLATE utf8_spanish_2_ci	Error Code: 1273. Unknown collation: 'utf8_spanish_2_ci'	0.000 sec
 
 -- Querys de Ejemplo
 
