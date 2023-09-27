@@ -8,8 +8,15 @@ CREATE TABLE usuarios (
   correo VARCHAR(30) NOT NULL,
   llave VARCHAR(30) NOT NULL,
   rol VARCHAR(15) NOT NULL,
+  titulo VARCHAR(5) DEFAULT NULL,
+  nombre VARCHAR(40) NOT NULL,
+  apellidop VARCHAR(20) NOT NULL,  
+  apellidom VARCHAR(20) DEFAULT NULL,
+  especialidad VARCHAR(25) DEFAULT NULL,
+  telefono VARCHAR(10) DEFAULT NULL,
   fecha_creacion DATETIME NOT NULL,
   id_usuario BINARY(16) NOT NULL,
+  id_centro BINARY(16) NOT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -26,6 +33,26 @@ CREATE TABLE centros (
   PRIMARY KEY(id)
 );
 
+CREATE TABLE cat_roles (
+  id BINARY(16) NOT NULL,
+  descripcion VARCHAR(20) NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE
+);
+
+USE dentaldb;
+CREATE TABLE cat_titulos (
+  id BINARY(16) NOT NULL,
+  descripcion VARCHAR(8) NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE
+);
+
+CREATE TABLE cat_especialidades (
+  id BINARY(16) NOT NULL,
+  descripcion VARCHAR(100) NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE
+);
+
+/*
 CREATE TABLE personal (
   id BINARY(16) NOT NULL,
   titulo VARCHAR(5) NOT NULL,
@@ -40,9 +67,8 @@ CREATE TABLE personal (
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
+*/
 
-	#	Time	Action	Message	Duration / Fetch
-0	1	18:40:08	CREATE DATABASE IF NOT EXISTS dentaldb CHARACTER SET utf8 COLLATE utf8_spanish_2_ci	Error Code: 1273. Unknown collation: 'utf8_spanish_2_ci'	0.000 sec
 
 -- Querys de Ejemplo
 
