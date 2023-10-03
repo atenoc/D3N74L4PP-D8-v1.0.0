@@ -7,7 +7,7 @@ CREATE TABLE usuarios (
   id BINARY(16) NOT NULL,
   correo VARCHAR(30) NOT NULL,
   llave VARCHAR(30) NOT NULL,
-  rol VARCHAR(15) NOT NULL,
+  id_rol BINARY(16) NOT NULL,
   id_titulo BINARY(16) DEFAULT NULL,
   nombre VARCHAR(40) NOT NULL,
   apellidop VARCHAR(20) NOT NULL,  
@@ -22,8 +22,8 @@ CREATE TABLE usuarios (
   PRIMARY KEY(id)
 );
 
-INSERT INTO usuarios(id, correo, llave, rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, fecha_creacion, llave_status, id_usuario, id_clinica) 
-values ( UUID_TO_BIN(UUID()) , 'example@gmail.com','123456','sop', 'Ing.', 'Car', 'Atn', 'T', 'Full', '5512345678', NOW(), 0, UUID_TO_BIN(UUID()), UUID_TO_BIN(UUID()) );
+INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, fecha_creacion, llave_status, id_usuario, id_clinica) 
+values ( UUID_TO_BIN(UUID()) , 'example@gmail.com','123456',UUID_TO_BIN(UUID()), 'Ing.', 'Car', 'Atn', 'T', 'Full', '5512345678', NOW(), 0, UUID_TO_BIN(UUID()), UUID_TO_BIN(UUID()) );
 
 CREATE TABLE clinicas (
   id BINARY(16) NOT NULL,
