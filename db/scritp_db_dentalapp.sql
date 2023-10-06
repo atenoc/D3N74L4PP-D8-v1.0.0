@@ -27,7 +27,7 @@ values ( UUID_TO_BIN(UUID()) , 'example@gmail.com','123456',UUID_TO_BIN(UUID()),
 
 CREATE TABLE clinicas (
   id BINARY(16) NOT NULL,
-  nombre VARCHAR(40) NOT NULL, 
+  nombre VARCHAR(100) NOT NULL, 
   telefono VARCHAR(10) NOT NULL,
   correo VARCHAR(30) DEFAULT NULL,
   direccion VARCHAR(130) NOT NULL,
