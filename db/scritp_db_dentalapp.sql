@@ -22,9 +22,6 @@ CREATE TABLE usuarios (
   PRIMARY KEY(id)
 );
 
-INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, fecha_creacion, llave_status, id_usuario, id_clinica) 
-values ( UUID_TO_BIN(UUID()) , 'example@gmail.com','123456',UUID_TO_BIN(UUID()), 'Ing.', 'Car', 'Atn', 'T', 'Full', '5512345678', NOW(), 0, UUID_TO_BIN(UUID()), UUID_TO_BIN(UUID()) );
-
 CREATE TABLE clinicas (
   id BINARY(16) NOT NULL,
   nombre VARCHAR(100) NOT NULL, 
@@ -44,7 +41,7 @@ CREATE TABLE cat_roles (
   PRIMARY KEY(id)
 );
 
-INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN(UUID()), 'sop');
+INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN('f7ffc7b5-7297-11ee-88de-00090ffe0001'), 'sop');
 INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN(UUID()), 'admin');
 INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN(UUID()), 'caja');
 INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN(UUID()), 'asistente');
@@ -82,6 +79,9 @@ INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'P
 INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Periodoncia');
 INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Prostodoncia y rehabilitación oral');
 INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Radiología oral y maxilofacial');
+
+INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, fecha_creacion, llave_status, id_usuario, id_clinica) 
+values ( UUID_TO_BIN(UUID()) , 'example@gmail.com','123456', UUID_TO_BIN('f7ffc7b5-7297-11ee-88de-00090ffe0001'), 'Ing.', 'Car', 'Atn', 'T', 'Full', '5512345678', NOW(), 0, UUID_TO_BIN(UUID()), UUID_TO_BIN(UUID()) );
 
 /*
 CREATE TABLE personal (
