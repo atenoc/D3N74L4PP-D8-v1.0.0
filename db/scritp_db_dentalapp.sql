@@ -36,53 +36,53 @@ CREATE TABLE clinicas (
 
 CREATE TABLE cat_roles (
   id BINARY(16) NOT NULL,
-  descripcion VARCHAR(15) NULL,
-  descripcion2 VARCHAR(25) NULL,
+  rol VARCHAR(15) NULL,
+  descripcion VARCHAR(25) NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
 
-INSERT INTO cat_roles(id, descripcion, descripcion2) values ( UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), 'sop', 'Usop');
-INSERT INTO cat_roles(id, descripcion, descripcion2) values ( UUID_TO_BIN('b28f9c23-5d9b-11ee-8537-00090ffe0001'), 'admin', 'Administrador');
-INSERT INTO cat_roles(id, descripcion, descripcion2) values ( UUID_TO_BIN('b2903c41-5d9b-11ee-8537-00090ffe0001'), 'adminn2', 'Asistente Administrativo');
-INSERT INTO cat_roles(id, descripcion, descripcion2) values ( UUID_TO_BIN('b290fa05-5d9b-11ee-8537-00090ffe0001'), 'medic', 'Médico Especialista');
-INSERT INTO cat_roles(id, descripcion, descripcion2) values ( UUID_TO_BIN('b291aa62-5d9b-11ee-8537-00090ffe0001'), 'caja', 'Cajero(a)');
-INSERT INTO cat_roles(id, descripcion, descripcion2) values ( UUID_TO_BIN('b29262d2-5d9b-11ee-8537-00090ffe0001'), 'recepcion', 'Recepcionista');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), 'sop', 'Usop');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b28f9c23-5d9b-11ee-8537-00090ffe0001'), 'admin', 'Administrador');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b2903c41-5d9b-11ee-8537-00090ffe0001'), 'adminn2', 'Asistente Administrativo');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b290fa05-5d9b-11ee-8537-00090ffe0001'), 'medic', 'Médico Especialista');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b291aa62-5d9b-11ee-8537-00090ffe0001'), 'caja', 'Cajero(a)');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b29262d2-5d9b-11ee-8537-00090ffe0001'), 'recepcion', 'Recepcionista');
 
 CREATE TABLE cat_titulos (
   id VARCHAR(10) NOT NULL,
-  descripcion VARCHAR(8) NULL,
-  descripcion2 VARCHAR(20) NULL,
+  titulo VARCHAR(8) NULL,
+  descripcion VARCHAR(20) NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
 
-INSERT INTO cat_titulos(id, descripcion, descripcion2) values ('0101ODO', 'Odont.' , 'Odontólogo(a)');
-INSERT INTO cat_titulos(id, descripcion, descripcion2) values ('0102DRR', 'Dr.', 'Doctor');
-INSERT INTO cat_titulos(id, descripcion, descripcion2) values ('0103DRA', 'Dra.', 'Doctora');
-INSERT INTO cat_titulos(id, descripcion, descripcion2) values ('0104AUX', 'Aux.', 'Auxiliar');
-INSERT INTO cat_titulos(id, descripcion, descripcion2) values ('0105ASI', 'Asist.', 'Asistente');
-INSERT INTO cat_titulos(id, descripcion, descripcion2) values ('0106ENF', 'Enf.', 'Enfermero(a)');
-INSERT INTO cat_titulos(id, descripcion, descripcion2) values ('0107NAA', 'N/A', 'N/A');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0101ODO', 'Odont.' , 'Odontólogo(a)');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0102DRR', 'Dr.', 'Doctor');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0103DRA', 'Dra.', 'Doctora');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0104AUX', 'Aux.', 'Auxiliar');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0105ASI', 'Asist.', 'Asistente');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0106ENF', 'Enf.', 'Enfermero(a)');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0107NAA', 'N/A', 'N/A');
 
 CREATE TABLE cat_especialidades (
   id VARCHAR(10) NOT NULL,
-  descripcion VARCHAR(100) NULL,
+  especialidad VARCHAR(100) NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
 
-INSERT INTO cat_especialidades(id, descripcion) values ('0201GRL', 'Odontología general');
-INSERT INTO cat_especialidades(id, descripcion) values ('0202COM', 'Cirugía oral y maxilofacial');
-INSERT INTO cat_especialidades(id, descripcion) values ('0203END', 'Endodoncia');
-INSERT INTO cat_especialidades(id, descripcion) values ('0204OES', 'Odontología estética');
-INSERT INTO cat_especialidades(id, descripcion) values ('0205ODP', 'Odontopediatría');
-INSERT INTO cat_especialidades(id, descripcion) values ('0206ORT', 'Ortodoncia');
-INSERT INTO cat_especialidades(id, descripcion) values ('0207PTB', 'Patología bucal');
-INSERT INTO cat_especialidades(id, descripcion) values ('0208PRD', 'Periodoncia');
-INSERT INTO cat_especialidades(id, descripcion) values ('0209PRO', 'Prostodoncia y rehabilitación oral');
-INSERT INTO cat_especialidades(id, descripcion) values ('0210ROM', 'Radiología oral y maxilofacial');
-INSERT INTO cat_especialidades(id, descripcion) values ('0210NAA', 'N/A');
+INSERT INTO cat_especialidades(id, especialidad) values ('0201GRL', 'Odontología general');
+INSERT INTO cat_especialidades(id, especialidad) values ('0202COM', 'Cirugía oral y maxilofacial');
+INSERT INTO cat_especialidades(id, especialidad) values ('0203END', 'Endodoncia');
+INSERT INTO cat_especialidades(id, especialidad) values ('0204OES', 'Odontología estética');
+INSERT INTO cat_especialidades(id, especialidad) values ('0205ODP', 'Odontopediatría');
+INSERT INTO cat_especialidades(id, especialidad) values ('0206ORT', 'Ortodoncia');
+INSERT INTO cat_especialidades(id, especialidad) values ('0207PTB', 'Patología bucal');
+INSERT INTO cat_especialidades(id, especialidad) values ('0208PRD', 'Periodoncia');
+INSERT INTO cat_especialidades(id, especialidad) values ('0209PRO', 'Prostodoncia y rehabilitación oral');
+INSERT INTO cat_especialidades(id, especialidad) values ('0210ROM', 'Radiología oral y maxilofacial');
+INSERT INTO cat_especialidades(id, especialidad) values ('0210NAA', 'N/A');
 
 INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, fecha_creacion, llave_status, id_usuario, id_clinica) 
 values ( UUID_TO_BIN(UUID()) , 'example@gmail.com','123456', UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), '0107NAA', 'Car', 'Atn', 'T', '0210NAA', '0000000000', NOW(), 0, UUID_TO_BIN(UUID()), UUID_TO_BIN(UUID()) );
