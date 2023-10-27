@@ -43,7 +43,8 @@ CREATE TABLE cat_roles (
 );
 
 INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), 'sop', 'Usop');
-INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b28f9c23-5d9b-11ee-8537-00090ffe0001'), 'admin', 'Administrador');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b28f9c23-5d9b-11ee-8537-00090ffe0001'), 'suadmin', 'Super Administrador');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b2309c14-5d9b-11ee-8537-00090ffe0001'), 'adminn1', 'Administrador');
 INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b2903c41-5d9b-11ee-8537-00090ffe0001'), 'adminn2', 'Asistente Administrativo');
 INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b290fa05-5d9b-11ee-8537-00090ffe0001'), 'medic', 'Médico Especialista');
 INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b291aa62-5d9b-11ee-8537-00090ffe0001'), 'caja', 'Cajero(a)');
