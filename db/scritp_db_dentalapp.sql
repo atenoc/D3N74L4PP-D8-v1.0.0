@@ -17,7 +17,7 @@ CREATE TABLE usuarios (
   fecha_creacion DATETIME NOT NULL,
   llave_status INT NOT NULL,
   id_usuario BINARY(16) NOT NULL,
-  id_clinica BINARY(16) NOT NULL,
+  id_clinica BINARY(16) NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
