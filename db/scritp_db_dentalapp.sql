@@ -86,7 +86,7 @@ INSERT INTO cat_especialidades(id, especialidad) values ('0210ROM', 'Radiología
 INSERT INTO cat_especialidades(id, especialidad) values ('0210NAA', 'N/A');
 
 INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, fecha_creacion, llave_status, id_usuario, id_clinica) 
-values ( UUID_TO_BIN(UUID()) , 'example@gmail.com','123456', UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), '0107NAA', 'Car', 'Atn', 'T', '0210NAA', '0000000000', NOW(), 0, UUID_TO_BIN(UUID()), UUID_TO_BIN(UUID()) );
+values ( UUID_TO_BIN(UUID()) , 'sop@sop.com','123456', UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), '0107NAA', 'Car', 'Atn', 'T', '0210NAA', '0000000000', NOW(), 0, UUID_TO_BIN(UUID()), null );
 
 /*
 CREATE TABLE personal (
