@@ -8,16 +8,16 @@ CREATE TABLE usuarios (
   correo VARCHAR(30) NOT NULL,
   llave VARCHAR(30) NOT NULL,
   id_rol BINARY(16) NOT NULL,
-  id_titulo BINARY(16) DEFAULT NULL,
+  id_titulo VARCHAR(10) DEFAULT NULL,
   nombre VARCHAR(40) NOT NULL,
   apellidop VARCHAR(20) NOT NULL,  
   apellidom VARCHAR(20) DEFAULT NULL,
-  id_especialidad BINARY(16) DEFAULT NULL,
+  id_especialidad VARCHAR(10) DEFAULT NULL,
   telefono VARCHAR(10) DEFAULT NULL,
   fecha_creacion DATETIME NOT NULL,
   llave_status INT NOT NULL,
   id_usuario BINARY(16) NOT NULL,
-  id_clinica BINARY(16) NOT NULL,
+  id_clinica BINARY(16) NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -36,52 +36,57 @@ CREATE TABLE clinicas (
 
 CREATE TABLE cat_roles (
   id BINARY(16) NOT NULL,
+  rol VARCHAR(15) NULL,
+  descripcion VARCHAR(25) NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), 'sop', 'Usop');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b28f9c23-5d9b-11ee-8537-00090ffe0001'), 'suadmin', 'Super Administrador');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b2309c14-5d9b-11ee-8537-00090ffe0001'), 'adminn1', 'Administrador');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b2903c41-5d9b-11ee-8537-00090ffe0001'), 'adminn2', 'Asistente Administrativo');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b290fa05-5d9b-11ee-8537-00090ffe0001'), 'medic', 'Médico Especialista');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b291aa62-5d9b-11ee-8537-00090ffe0001'), 'caja', 'Cajero(a)');
+INSERT INTO cat_roles(id, rol, descripcion) values ( UUID_TO_BIN('b29262d2-5d9b-11ee-8537-00090ffe0001'), 'recepcion', 'Recepcionista');
+
+CREATE TABLE cat_titulos (
+  id VARCHAR(10) NOT NULL,
+  titulo VARCHAR(8) NULL,
   descripcion VARCHAR(20) NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
 
-INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN('f7ffc7b5-7297-11ee-88de-00090ffe0001'), 'sop');
-INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN(UUID()), 'admin');
-INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN(UUID()), 'caja');
-INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN(UUID()), 'asistente');
-INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN(UUID()), 'recepcion');
-INSERT INTO cat_roles(id, descripcion) values ( UUID_TO_BIN(UUID()), 'invitado');
-
-CREATE TABLE cat_titulos (
-  id BINARY(16) NOT NULL,
-  descripcion VARCHAR(8) NULL,
-  autoincremental INT AUTO_INCREMENT UNIQUE,
-  PRIMARY KEY(id)
-);
-
-INSERT INTO cat_titulos(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Odont.');
-INSERT INTO cat_titulos(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Dr.');
-INSERT INTO cat_titulos(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Dra.');
-INSERT INTO cat_titulos(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Aux.');
-INSERT INTO cat_titulos(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Asist.');
-INSERT INTO cat_titulos(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Enf.');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0101ODO', 'Odont.' , 'Odontólogo(a)');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0102DRR', 'Dr.', 'Doctor');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0103DRA', 'Dra.', 'Doctora');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0104AUX', 'Aux.', 'Auxiliar');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0105ASI', 'Asist.', 'Asistente');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0106ENF', 'Enf.', 'Enfermero(a)');
+INSERT INTO cat_titulos(id, titulo, descripcion) values ('0107NAA', 'N/A', 'N/A');
 
 CREATE TABLE cat_especialidades (
-  id BINARY(16) NOT NULL,
-  descripcion VARCHAR(100) NULL,
+  id VARCHAR(10) NOT NULL,
+  especialidad VARCHAR(100) NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
 
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Odontología general');
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Cirugía oral y maxilofacial');
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Endodoncia');
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Odontología estética');
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Odontopediatría');
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Ortodoncia');
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Patología bucal');
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Periodoncia');
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Prostodoncia y rehabilitación oral');
-INSERT INTO cat_especialidades(id, descripcion) values ( UUID_TO_BIN(UUID()), 'Radiología oral y maxilofacial');
+INSERT INTO cat_especialidades(id, especialidad) values ('0201GRL', 'Odontología general');
+INSERT INTO cat_especialidades(id, especialidad) values ('0202COM', 'Cirugía oral y maxilofacial');
+INSERT INTO cat_especialidades(id, especialidad) values ('0203END', 'Endodoncia');
+INSERT INTO cat_especialidades(id, especialidad) values ('0204OES', 'Odontología estética');
+INSERT INTO cat_especialidades(id, especialidad) values ('0205ODP', 'Odontopediatría');
+INSERT INTO cat_especialidades(id, especialidad) values ('0206ORT', 'Ortodoncia');
+INSERT INTO cat_especialidades(id, especialidad) values ('0207PTB', 'Patología bucal');
+INSERT INTO cat_especialidades(id, especialidad) values ('0208PRD', 'Periodoncia');
+INSERT INTO cat_especialidades(id, especialidad) values ('0209PRO', 'Prostodoncia y rehabilitación oral');
+INSERT INTO cat_especialidades(id, especialidad) values ('0210ROM', 'Radiología oral y maxilofacial');
+INSERT INTO cat_especialidades(id, especialidad) values ('0210NAA', 'N/A');
 
 INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, fecha_creacion, llave_status, id_usuario, id_clinica) 
-values ( UUID_TO_BIN(UUID()) , 'example@gmail.com','123456', UUID_TO_BIN('f7ffc7b5-7297-11ee-88de-00090ffe0001'), 'Ing.', 'Car', 'Atn', 'T', 'Full', '5512345678', NOW(), 0, UUID_TO_BIN(UUID()), UUID_TO_BIN(UUID()) );
+values ( UUID_TO_BIN(UUID()) , 'sop@sop.com','123456', UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), '0107NAA', 'Car', 'Atn', 'T', '0210NAA', '0000000000', NOW(), 0, UUID_TO_BIN(UUID()), null );
 
 /*
 CREATE TABLE personal (
