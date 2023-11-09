@@ -6,7 +6,7 @@ USE dentaldb;
 CREATE TABLE usuarios (
   id BINARY(16) NOT NULL,
   correo VARCHAR(30) NOT NULL,
-  llave VARCHAR(30) NOT NULL,
+  llave VARCHAR(65) NOT NULL,
   id_rol BINARY(16) NOT NULL,
   id_titulo VARCHAR(10) DEFAULT NULL,
   nombre VARCHAR(40) NOT NULL,
