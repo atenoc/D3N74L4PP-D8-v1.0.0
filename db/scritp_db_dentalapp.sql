@@ -89,21 +89,42 @@ INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, ap
 values ( UUID_TO_BIN(UUID()) , 'sop@sop.com','$2b$10$yJxhkWSHPGCGYNJ.15iazuPXK2GRxhNf668Qq7ZnY3aBFtfM.1COO', UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), '0107NAA', 'Car', 'Atn', 'T', '0210NAA', '0000000000', NOW(), 0, UUID_TO_BIN(UUID()), null );
 
 /*
-CREATE TABLE personal (
+CREATE TABLE citas (
   id BINARY(16) NOT NULL,
-  titulo VARCHAR(5) NOT NULL,
-  nombre VARCHAR(40) NOT NULL,
-  apellidop VARCHAR(20) NOT NULL,  
-  apellidom VARCHAR(20) DEFAULT NULL,
-  especialidad VARCHAR(25) NOT NULL,
-  telefono VARCHAR(10) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
+  titulo VARCHAR(100) NOT NULL, 
+  motivo VARCHAR(50) NULL,
+  fecha_hora_inicio DATETIME NOT NULL,
+  fecha_hora_fin DATETIME NULL,
+  nota VARCHAR(200) NULL,
+  id_estatus_cita VARCHAR(15) NOT NULL,
+  id_estatus_pago VARCHAR(15) NOT NULL,
+  id_tipo_pago VARCHAR(15) NULL,
+  id_medico BINARY(16) NULL,
+  id_paciente BINARY(16) NOT NULL,
+  id_clinica BINARY(16) NOT NULL,
   id_usuario BINARY(16) NOT NULL,
-  id_centro BINARY(16) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
 */
+
+CREATE TABLE citas (
+  id BINARY(16) NOT NULL,
+  titulo VARCHAR(100) NOT NULL,
+  motivo VARCHAR(50) NOT NULL,
+  fecha_hora_inicio DATETIME NOT NULL,
+  fecha_hora_fin DATETIME NULL,
+  nota VARCHAR(200) NULL,
+  id_estatus_cita VARCHAR(15) NOT NULL,
+  id_estatus_pago VARCHAR(15) NOT NULL,
+  id_tipo_pago VARCHAR(15) NULL,
+  id_clinica BINARY(16) NOT NULL,
+  id_usuario BINARY(16) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
 
 
 -- Querys de Ejemplo
