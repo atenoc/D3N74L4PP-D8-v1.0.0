@@ -106,6 +106,16 @@ CREATE TABLE citas (
   PRIMARY KEY(id)
 );
 
+CREATE TABLE cat_sexo (
+  id VARCHAR(1) NOT NULL,
+  descripcion VARCHAR(9) NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+INSERT INTO cat_sexo(id, descripcion) values ('M', 'Masculino');
+INSERT INTO cat_sexo(id, descripcion) values ('F', 'Femenino');
+
 CREATE TABLE pacientes (
   id BINARY(16) NOT NULL,
   nombre VARCHAR(40) NOT NULL,
