@@ -1,4 +1,4 @@
---CREATE DATABASE IF NOT EXISTS dentaldb
+-- CREATE DATABASE IF NOT EXISTS dentaldb
 CREATE DATABASE IF NOT EXISTS dentaldb DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 
 USE dentaldb;
@@ -14,10 +14,12 @@ CREATE TABLE usuarios (
   apellidom VARCHAR(20) DEFAULT NULL,
   id_especialidad VARCHAR(10) DEFAULT NULL,
   telefono VARCHAR(10) DEFAULT NULL,
-  fecha_creacion DATETIME NOT NULL,
   llave_status INT NOT NULL,
-  id_usuario BINARY(16) NOT NULL,
   id_clinica BINARY(16) NULL,
+  id_usuario BINARY(16) NOT NULL,
+  id_plan VARCHAR(10) NOT NULL,
+  id_estatus_pago BINARY(16) DEFAULT NULL,
+  fecha_creacion DATETIME NOT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -85,8 +87,66 @@ INSERT INTO cat_especialidades(id, especialidad) values ('0209PRO', 'Prostodonci
 INSERT INTO cat_especialidades(id, especialidad) values ('0210ROM', 'Radiología oral y maxilofacial');
 INSERT INTO cat_especialidades(id, especialidad) values ('0210NAA', 'N/A');
 
-INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, fecha_creacion, llave_status, id_usuario, id_clinica) 
-values ( UUID_TO_BIN(UUID()) , 'sop@sop.com','$2b$10$yJxhkWSHPGCGYNJ.15iazuPXK2GRxhNf668Qq7ZnY3aBFtfM.1COO', UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), '0107NAA', 'Car', 'Atn', 'T', '0210NAA', '0000000000', NOW(), 0, UUID_TO_BIN(UUID()), null );
+CREATE TABLE cat_estatus_cuenta (
+  id VARCHAR(10) NOT NULL,
+  estatus_cuenta VARCHAR(15) NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+INSERT INTO cat_estatus_cuenta(id, estatus_cuenta) values ('0301ACT', 'Activa');
+INSERT INTO cat_estatus_cuenta(id, estatus_cuenta) values ('0302SUS', 'Suspendida');
+INSERT INTO cat_estatus_cuenta(id, estatus_cuenta) values ('0303BLO', 'Bloqueada');
+
+CREATE TABLE cat_planes (
+  id VARCHAR(10) NOT NULL,
+  plan VARCHAR(30) NULL,
+  precio VARCHAR(8) NULL,
+  caracteristicas VARCHAR(100) NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+
+INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0401PF30', 'Prueba gratis por 30 días', '0', 'Prueba por gratis 30 días');
+INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0402PF3T', 'Prueba gratuita terminada', '0', 'Prueba por gratis 30 días terminada');
+INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0403PBAS', 'Plan Básico', '300', 'Incluye...');
+INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0404PMED', 'Plan Intermedio', '600', 'Incluye...');
+INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0405PPRO', 'Plan Completo', '900', 'Incluye...');
+INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0406PLNA', 'NA', '0', 'Usuario');
+
+
+CREATE TABLE pagos (
+  id BINARY(16) NOT NULL,
+  monto VARCHAR(10) NULL,
+  fecha_pago DATETIME NOT NULL,
+  id_usuario BINARY(16) NOT NULL,
+  id_plan BINARY(16) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+
+INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, llave_status, id_clinica, id_usuario, id_plan, id_estatus_pago, fecha_creacion) 
+values ( 
+  UUID_TO_BIN(UUID()), 
+  'sop@sop.com',
+  '$2b$10$yJxhkWSHPGCGYNJ.15iazuPXK2GRxhNf668Qq7ZnY3aBFtfM.1COO',
+  UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), 
+  '0107NAA', 
+  'Car', 
+  'Atn', 
+  'T', 
+  '0210NAA', 
+  '5538000000', 
+  0, 
+  null,
+  UUID_TO_BIN(UUID()),
+  '0401PF30',
+  '',
+  NOW()
+  );
 
 CREATE TABLE citas (
   id BINARY(16) NOT NULL,
