@@ -17,7 +17,7 @@ CREATE TABLE usuarios (
   llave_status INT NOT NULL,
   id_clinica BINARY(16) NULL,
   id_usuario BINARY(16) NOT NULL,
-  id_plan VARCHAR(10) NOT NULL,
+  -- id_plan VARCHAR(10) NOT NULL,
   id_estatus_pago BINARY(16) DEFAULT NULL,
   fecha_creacion DATETIME NOT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
@@ -32,6 +32,7 @@ CREATE TABLE clinicas (
   direccion VARCHAR(130) NOT NULL,
   fecha_creacion DATETIME NOT NULL,
   id_usuario BINARY(16) NOT NULL,
+  id_plan VARCHAR(10) NOT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -128,9 +129,9 @@ CREATE TABLE pagos (
 );
 
 
-INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, llave_status, id_clinica, id_usuario, id_plan, id_estatus_pago, fecha_creacion) 
+INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, llave_status, id_clinica, id_usuario, id_estatus_pago, fecha_creacion) 
 values ( 
-  UUID_TO_BIN(UUID()), 
+  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'), 
   'sop@sop.com',
   '$2b$10$yJxhkWSHPGCGYNJ.15iazuPXK2GRxhNf668Qq7ZnY3aBFtfM.1COO',
   UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), 
@@ -143,10 +144,21 @@ values (
   0, 
   null,
   UUID_TO_BIN(UUID()),
-  '0401PF30',
   '',
   NOW()
   );
+
+/*INSERT INTO clinicas(id, nombre, telefono, correo, direccion, fecha_creacion, id_usuario, id_plan)
+values (
+  UUID_TO_BIN(UUID()), 
+  'Dental App',
+  '1234567890',
+  '', 
+  'CD...', 
+  NOW(), 
+  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'),
+  '0405PPRO'
+);*/
 
 CREATE TABLE citas (
   id BINARY(16) NOT NULL,
