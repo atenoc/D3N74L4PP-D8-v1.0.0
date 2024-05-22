@@ -207,6 +207,35 @@ CREATE TABLE pacientes (
 );
 
 
+CREATE TABLE historias_dentales (
+  id BINARY(16) NOT NULL,
+  ultima_visita_dentista VARCHAR(30) DEFAULT NULL,
+  problemas_dentales_pasados VARCHAR(50) DEFAULT NULL,
+  tratamientos_previos_cuando VARCHAR(100) DEFAULT NULL,
+  dolor_sensibilidad VARCHAR(100) DEFAULT NULL,
+  -- Condición médica
+  condicion_medica_actual VARCHAR(100) DEFAULT NULL,
+  medicamentos_actuales VARCHAR(100) DEFAULT NULL,
+  alergias_conocidas VARCHAR(100) DEFAULT NULL,
+  cirugias_enfermedades_graves VARCHAR(100) DEFAULT NULL,
+  -- Hábitos salud dental
+  frecuencia_cepillado VARCHAR(100) DEFAULT NULL,
+  uso_hilo_dental VARCHAR(100) DEFAULT NULL,
+  uso_productos_especializados VARCHAR(100) DEFAULT NULL,
+  tabaco_frecuencia VARCHAR(100) DEFAULT NULL,
+  habito_alimenticio VARCHAR(100) DEFAULT NULL,
+  --
+  id_paciente BINARY(16) NOT NULL,
+  id_clinica BINARY(16) NOT NULL,
+  id_usuario_creador BINARY(16) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
+  id_usuario_actualizo BINARY(16) DEFAULT NULL,
+  fecha_actualizacion DATETIME DEFAULT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+
 -- Querys de Ejemplo
 
 -- Usuarios
