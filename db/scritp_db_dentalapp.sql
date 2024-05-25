@@ -236,6 +236,22 @@ CREATE TABLE historias_dentales (
 );
 
 
+CREATE TABLE diagnosticos (
+  id BINARY(16) NOT NULL,
+  descripcion_problema VARCHAR(1500) DEFAULT NULL,
+  codigo_diagnostico VARCHAR(25) DEFAULT NULL,
+  evidencias TEXT DEFAULT NULL,
+  id_paciente BINARY(16) NOT NULL,
+  id_clinica BINARY(16) NOT NULL,
+  id_usuario_creador BINARY(16) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
+  id_usuario_actualizo BINARY(16) DEFAULT NULL,
+  fecha_actualizacion DATETIME DEFAULT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+
 -- Querys de Ejemplo
 
 -- Usuarios
