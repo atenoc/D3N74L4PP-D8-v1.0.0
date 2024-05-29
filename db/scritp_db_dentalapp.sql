@@ -251,6 +251,35 @@ CREATE TABLE diagnosticos (
   PRIMARY KEY(id)
 );
 
+CREATE TABLE tratamientos (
+  id BINARY(16) NOT NULL,
+  tratamiento_propuesto VARCHAR(1500) DEFAULT NULL,
+  medicamentos_prescritos VARCHAR(500) DEFAULT NULL,
+  costo_estimado VARCHAR(10) DEFAULT NULL,
+  id_paciente BINARY(16) NOT NULL,
+  id_clinica BINARY(16) NOT NULL,
+  id_usuario_creador BINARY(16) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
+  id_usuario_actualizo BINARY(16) DEFAULT NULL,
+  fecha_actualizacion DATETIME DEFAULT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE seguimientos (
+  id BINARY(16) NOT NULL,
+  proxima_cita DATETIME DEFAULT NULL,
+  notas_seguimiento VARCHAR(1500) DEFAULT NULL,
+  id_paciente BINARY(16) NOT NULL,
+  id_clinica BINARY(16) NOT NULL,
+  id_usuario_creador BINARY(16) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
+  id_usuario_actualizo BINARY(16) DEFAULT NULL,
+  fecha_actualizacion DATETIME DEFAULT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
 
 -- Querys de Ejemplo
 
