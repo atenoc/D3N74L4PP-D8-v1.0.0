@@ -88,6 +88,7 @@ INSERT INTO cat_especialidades(id, especialidad) values ('0209PRO', 'Prostodonci
 INSERT INTO cat_especialidades(id, especialidad) values ('0210ROM', 'Radiología oral y maxilofacial');
 INSERT INTO cat_especialidades(id, especialidad) values ('0210NAA', 'N/A');
 
+
 CREATE TABLE cat_estatus_cuenta (
   id VARCHAR(10) NOT NULL,
   estatus_cuenta VARCHAR(15) NULL,
@@ -99,6 +100,7 @@ INSERT INTO cat_estatus_cuenta(id, estatus_cuenta) values ('0301ACT', 'Activa');
 INSERT INTO cat_estatus_cuenta(id, estatus_cuenta) values ('0302SUS', 'Suspendida');
 INSERT INTO cat_estatus_cuenta(id, estatus_cuenta) values ('0303BLO', 'Bloqueada');
 
+
 CREATE TABLE cat_planes (
   id VARCHAR(10) NOT NULL,
   plan VARCHAR(30) NULL,
@@ -107,7 +109,6 @@ CREATE TABLE cat_planes (
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
-
 
 INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0401PF30', 'Prueba gratis por 30 días', '0', 'Prueba por gratis 30 días');
 INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0402PF3T', 'Prueba gratuita terminada', '0', 'Prueba por gratis 30 días terminada');
