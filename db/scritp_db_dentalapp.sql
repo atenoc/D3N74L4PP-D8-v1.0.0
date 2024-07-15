@@ -117,18 +117,6 @@ INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0405PPRO', 'P
 INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0406PLNA', 'NA', '0', 'Usuario');
 
 
-CREATE TABLE pagos (
-  id BINARY(16) NOT NULL,
-  monto VARCHAR(10) NULL,
-  fecha_pago DATETIME NOT NULL,
-  id_usuario BINARY(16) NOT NULL,
-  id_plan BINARY(16) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
-  autoincremental INT AUTO_INCREMENT UNIQUE,
-  PRIMARY KEY(id)
-);
-
-
 INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, llave_status, id_clinica, id_usuario, id_estatus_pago, fecha_creacion) 
 values ( 
   UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'), 
@@ -201,6 +189,18 @@ CREATE TABLE pacientes (
   direccion VARCHAR(130) DEFAULT NULL,
   id_clinica BINARY(16) NOT NULL,
   id_usuario BINARY(16) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+
+CREATE TABLE pagos (
+  id BINARY(16) NOT NULL,
+  monto VARCHAR(10) NULL,
+  fecha_pago DATETIME NOT NULL,
+  id_usuario BINARY(16) NOT NULL,
+  id_plan BINARY(16) NOT NULL,
   fecha_creacion DATETIME NOT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
