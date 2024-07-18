@@ -16,10 +16,12 @@ CREATE TABLE usuarios (
   telefono VARCHAR(10) DEFAULT NULL,
   llave_status INT NOT NULL,
   id_clinica BINARY(16) NULL,
-  id_usuario BINARY(16) NOT NULL,
   -- id_plan VARCHAR(10) NOT NULL,
-  id_estatus_pago BINARY(16) DEFAULT NULL,
+  -- id_estatus_pago BINARY(16) DEFAULT NULL,
+  id_usuario_creador BINARY(16) NOT NULL,
   fecha_creacion DATETIME NOT NULL,
+  id_usuario_actualizo BINARY(16) DEFAULT NULL,
+  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -118,7 +120,7 @@ INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0405PPRO', 'P
 INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0406PLNA', 'NA', '0', 'Usuario');
 
 
-INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, llave_status, id_clinica, id_usuario, id_estatus_pago, fecha_creacion) 
+INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, llave_status, id_clinica, id_usuario_creador, fecha_creacion) 
 values ( 
   UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'), 
   'sop@sop.com',
@@ -133,7 +135,6 @@ values (
   0, 
   null,
   UUID_TO_BIN(UUID()),
-  '',
   NOW()
   );
 
@@ -160,9 +161,12 @@ CREATE TABLE citas (
   id_estatus_pago VARCHAR(15) NOT NULL,
   id_tipo_pago VARCHAR(15) NULL,
   id_paciente BINARY(16) NOT NULL,
+  id_usuario_medico BINARY(16) DEFAULT NULL,
   id_clinica BINARY(16) NOT NULL,
-  id_usuario BINARY(16) NOT NULL,
+  id_usuario_creador BINARY(16) NOT NULL,
   fecha_creacion DATETIME NOT NULL,
+  id_usuario_actualizo BINARY(16) DEFAULT NULL,
+  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -184,13 +188,15 @@ CREATE TABLE pacientes (
   apellidom VARCHAR(20) DEFAULT NULL,
   edad VARCHAR(3) DEFAULT NULL,
   fecha_nac DATE DEFAULT NULL,
-  id_sexo VARCHAR(2) DEFAULT NULL,
+  id_sexo VARCHAR(4) DEFAULT NULL,
   telefono VARCHAR(10) DEFAULT NULL,
   correo VARCHAR(30) DEFAULT NULL,
   direccion VARCHAR(130) DEFAULT NULL,
   id_clinica BINARY(16) NOT NULL,
-  id_usuario BINARY(16) NOT NULL,
+  id_usuario_creador BINARY(16) NOT NULL,
   fecha_creacion DATETIME NOT NULL,
+  id_usuario_actualizo BINARY(16) DEFAULT NULL,
+  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
