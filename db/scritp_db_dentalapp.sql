@@ -9,7 +9,7 @@ CREATE TABLE usuarios (
   llave VARCHAR(65) NOT NULL,
   id_rol BINARY(16) NOT NULL,
   id_titulo VARCHAR(10) DEFAULT NULL,
-  nombre VARCHAR(40) NOT NULL,
+  nombre VARCHAR(30) NOT NULL,
   apellidop VARCHAR(20) NOT NULL,  
   apellidom VARCHAR(20) DEFAULT NULL,
   id_especialidad VARCHAR(10) DEFAULT NULL,
@@ -183,7 +183,7 @@ INSERT INTO cat_sexo(id, descripcion) values ('F', 'Femenino');
 
 CREATE TABLE pacientes (
   id BINARY(16) NOT NULL,
-  nombre VARCHAR(40) NOT NULL,
+  nombre VARCHAR(30) NOT NULL,
   apellidop VARCHAR(20) NOT NULL,  
   apellidom VARCHAR(20) DEFAULT NULL,
   edad VARCHAR(3) DEFAULT NULL,
