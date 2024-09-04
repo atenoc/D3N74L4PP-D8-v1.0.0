@@ -287,6 +287,39 @@ CREATE TABLE seguimientos (
   PRIMARY KEY(id)
 );
 
+CREATE TABLE imagenes (
+  id BINARY(16) NOT NULL,
+  url VARCHAR(500) NOT NULL,
+  descripcion VARCHAR(300) DEFAULT NULL,
+  comentarios VARCHAR(500) DEFAULT NULL,
+  id_paciente BINARY(16) DEFAULT NULL,
+  id_diagnostico BINARY(16) DEFAULT NULL,
+  id_clinica BINARY(16) NOT NULL,
+  id_usuario_creador BINARY(16) NOT NULL,
+  fecha_creacion DATETIME NOT NULL,
+  autoincremental INT AUTO_INCREMENT UNIQUE,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE accesos (
+  id INT AUTO_INCREMENT UNIQUE,
+  id_usuario BINARY(16) NOT NULL,
+  ip_origen VARCHAR(20) NOT NULL,
+  estado VARCHAR(20) DEFAULT NULL, -- Exitoso, Fallido
+  fecha_evento DATETIME NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE auditoria (
+  id INT AUTO_INCREMENT UNIQUE,
+  id_registro BINARY(16) NOT NULL,
+  id_usuario BINARY(16) NOT NULL,
+  id_clinica BINARY(16) NOT NULL,
+  tipo_evento VARCHAR(20) NOT NULL, -- CREATE, UPDATE, DELETE
+  tabla_afectada VARCHAR(20) DEFAULT NULL, 
+  fecha_evento DATETIME NOT NULL,
+  PRIMARY KEY(id)
+);
 
 -- Querys de Ejemplo
 
