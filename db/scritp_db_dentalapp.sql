@@ -18,10 +18,6 @@ CREATE TABLE usuarios (
   id_clinica BINARY(16) NULL,
   -- id_plan VARCHAR(10) NOT NULL,
   -- id_estatus_pago BINARY(16) DEFAULT NULL,
-  id_usuario_creador BINARY(16) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
-  id_usuario_actualizo BINARY(16) DEFAULT NULL,
-  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -33,7 +29,7 @@ CREATE TABLE clinicas (
   correo VARCHAR(30) DEFAULT NULL,
   direccion VARCHAR(130) NOT NULL,
   fecha_creacion DATETIME NOT NULL,
-  id_usuario BINARY(16) NOT NULL,
+  id_usuario_creador BINARY(16) NOT NULL,
   id_plan VARCHAR(10) NOT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
@@ -118,37 +114,6 @@ INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0403PBAS', 'P
 INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0404PMED', 'Plan Intermedio', '600', 'Incluye...');
 INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0405PPRO', 'Plan Completo', '900', 'Incluye...');
 INSERT INTO cat_planes(id, plan, precio, caracteristicas) values ('0406PLNA', 'NA', '0', 'Usuario');
-
-
-INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, llave_status, id_clinica, id_usuario_creador, fecha_creacion) 
-values ( 
-  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'), 
-  'sop@sop.com',
-  '$2b$10$yJxhkWSHPGCGYNJ.15iazuPXK2GRxhNf668Qq7ZnY3aBFtfM.1COO',
-  UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), 
-  '0107NAA', 
-  'Car', 
-  'Atn', 
-  'T', 
-  '0210NAA', 
-  '5538000000', 
-  0, 
-  null,
-  UUID_TO_BIN(UUID()),
-  NOW()
-  );
-
-/*INSERT INTO clinicas(id, nombre, telefono, correo, direccion, fecha_creacion, id_usuario, id_plan)
-values (
-  UUID_TO_BIN(UUID()), 
-  'Dental App',
-  '1234567890',
-  '', 
-  'CD...', 
-  NOW(), 
-  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'),
-  '0405PPRO'
-);*/
 
 CREATE TABLE citas (
   id BINARY(16) NOT NULL,
@@ -320,6 +285,54 @@ CREATE TABLE auditoria (
   fecha_evento DATETIME NOT NULL,
   PRIMARY KEY(id)
 );
+
+
+INSERT INTO clinicas(id, nombre, telefono, correo, direccion, id_plan, id_usuario_creador, fecha_creacion)
+values (
+  UUID_TO_BIN('1dcf4c1b-449a-11ef-b367-00090ffe0001'), 
+  'Dental App',
+  '1234567890',
+  'dental@app.com', 
+  'CD.MX', 
+  '0405PPRO',
+  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'),
+  '2024-01-01 17:27:40'
+);
+
+INSERT INTO auditoria(id_registro, id_usuario, id_clinica, tipo_evento, tabla_afectada, fecha_evento) 
+values (
+  UUID_TO_BIN('1dcf4c1b-449a-11ef-b367-00090ffe0001'), 
+  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'), 
+  UUID_TO_BIN('1dcf4c1b-449a-11ef-b367-00090ffe0001'), 
+  'CREATE', 'clinicas', '2024-01-01 17:27:40');
+
+
+INSERT INTO usuarios(id, correo, llave, id_rol, id_titulo, nombre, apellidop, apellidom, id_especialidad, telefono, llave_status, id_clinica) 
+values ( 
+  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'), 
+  'sop@sop.com',
+  '$2b$10$yJxhkWSHPGCGYNJ.15iazuPXK2GRxhNf668Qq7ZnY3aBFtfM.1COO',
+  UUID_TO_BIN('b29304d5-5d9b-11ee-8537-00090ffe0001'), 
+  '0107NAA', 
+  'Car', 
+  'Atn', 
+  'T', 
+  '0210NAA', 
+  '5538000000', 
+  0, 
+  UUID_TO_BIN('1dcf4c1b-449a-11ef-b367-00090ffe0001')
+  );
+
+
+INSERT INTO auditoria(id_registro, id_usuario, id_clinica, tipo_evento, tabla_afectada, fecha_evento) 
+values (
+  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'), 
+  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'), 
+  UUID_TO_BIN('1dcf4c1b-449a-11ef-b367-00090ffe0001'), 
+  'CREATE', 'usuarios', '2024-01-01 17:27:40');
+
+
+
 
 -- Querys de Ejemplo
 
