@@ -28,8 +28,6 @@ CREATE TABLE clinicas (
   telefono VARCHAR(10) NOT NULL,
   correo VARCHAR(30) DEFAULT NULL,
   direccion VARCHAR(130) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
-  id_usuario_creador BINARY(16) NOT NULL,
   id_plan VARCHAR(10) NOT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
