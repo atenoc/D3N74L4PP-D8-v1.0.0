@@ -125,13 +125,9 @@ CREATE TABLE citas (
   id_estatus_cita VARCHAR(15) NOT NULL,
   id_estatus_pago VARCHAR(15) NOT NULL,
   id_tipo_pago VARCHAR(15) NULL,
-  id_paciente BINARY(16) NOT NULL,
+  id_paciente BINARY(16) DEFAULT NULL, -- Cuando se crean eventos no es requerido
   id_usuario_medico BINARY(16) DEFAULT NULL,
   id_clinica BINARY(16) NOT NULL,
-  id_usuario_creador BINARY(16) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
-  id_usuario_actualizo BINARY(16) DEFAULT NULL,
-  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -158,10 +154,6 @@ CREATE TABLE pacientes (
   correo VARCHAR(30) DEFAULT NULL,
   direccion VARCHAR(130) DEFAULT NULL,
   id_clinica BINARY(16) NOT NULL,
-  id_usuario_creador BINARY(16) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
-  id_usuario_actualizo BINARY(16) DEFAULT NULL,
-  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
