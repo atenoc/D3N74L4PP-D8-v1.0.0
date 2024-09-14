@@ -169,7 +169,7 @@ CREATE TABLE pagos (
 );
 
 
-CREATE TABLE historias_dentales (
+CREATE TABLE historias (
   id BINARY(16) NOT NULL,
   ultima_visita_dentista VARCHAR(30) DEFAULT NULL,
   problemas_dentales_pasados VARCHAR(50) DEFAULT NULL,
@@ -189,10 +189,6 @@ CREATE TABLE historias_dentales (
   --
   id_paciente BINARY(16) NOT NULL,
   id_clinica BINARY(16) NOT NULL,
-  id_usuario_creador BINARY(16) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
-  id_usuario_actualizo BINARY(16) DEFAULT NULL,
-  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -277,16 +273,14 @@ CREATE TABLE auditoria (
 );
 
 
-INSERT INTO clinicas(id, nombre, telefono, correo, direccion, id_plan, id_usuario_creador, fecha_creacion)
+INSERT INTO clinicas(id, nombre, telefono, correo, direccion, id_plan)
 values (
   UUID_TO_BIN('1dcf4c1b-449a-11ef-b367-00090ffe0001'), 
   'Dental App',
   '1234567890',
   'dental@app.com', 
   'CD.MX', 
-  '0405PPRO',
-  UUID_TO_BIN('ecd5e534-fabf-11ee-b435-00090ffe0001'),
-  '2024-01-01 17:27:40'
+  '0405PPRO'
 );
 
 INSERT INTO auditoria(id_registro, id_usuario, id_clinica, tipo_evento, tabla_afectada, fecha_evento) 
