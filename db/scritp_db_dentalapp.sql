@@ -201,10 +201,6 @@ CREATE TABLE diagnosticos (
   evidencias TEXT DEFAULT NULL,
   id_paciente BINARY(16) NOT NULL,
   id_clinica BINARY(16) NOT NULL,
-  id_usuario_creador BINARY(16) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
-  id_usuario_actualizo BINARY(16) DEFAULT NULL,
-  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
