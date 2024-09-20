@@ -212,10 +212,6 @@ CREATE TABLE tratamientos (
   costo_estimado VARCHAR(10) DEFAULT NULL,
   id_paciente BINARY(16) NOT NULL,
   id_clinica BINARY(16) NOT NULL,
-  id_usuario_creador BINARY(16) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
-  id_usuario_actualizo BINARY(16) DEFAULT NULL,
-  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -226,10 +222,6 @@ CREATE TABLE seguimientos (
   notas_seguimiento VARCHAR(1500) DEFAULT NULL,
   id_paciente BINARY(16) NOT NULL,
   id_clinica BINARY(16) NOT NULL,
-  id_usuario_creador BINARY(16) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
-  id_usuario_actualizo BINARY(16) DEFAULT NULL,
-  fecha_actualizacion DATETIME DEFAULT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
@@ -237,13 +229,10 @@ CREATE TABLE seguimientos (
 CREATE TABLE imagenes (
   id BINARY(16) NOT NULL,
   url VARCHAR(500) NOT NULL,
-  descripcion VARCHAR(300) DEFAULT NULL,
   comentarios VARCHAR(500) DEFAULT NULL,
   id_paciente BINARY(16) DEFAULT NULL,
   id_diagnostico BINARY(16) DEFAULT NULL,
   id_clinica BINARY(16) NOT NULL,
-  id_usuario_creador BINARY(16) NOT NULL,
-  fecha_creacion DATETIME NOT NULL,
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
