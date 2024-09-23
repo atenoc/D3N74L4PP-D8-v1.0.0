@@ -229,7 +229,7 @@ CREATE TABLE seguimientos (
 CREATE TABLE imagenes (
   id BINARY(16) NOT NULL,
   url VARCHAR(500) NOT NULL,
-  comentarios VARCHAR(500) DEFAULT NULL,
+  descripcion VARCHAR(500) DEFAULT NULL,
   id_paciente BINARY(16) DEFAULT NULL,
   id_diagnostico BINARY(16) DEFAULT NULL,
   id_clinica BINARY(16) NOT NULL,
