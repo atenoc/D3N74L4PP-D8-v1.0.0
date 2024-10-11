@@ -18,6 +18,7 @@ CREATE TABLE usuarios (
   id_clinica BINARY(16) NULL,
   -- id_plan VARCHAR(10) NOT NULL,
   -- id_estatus_pago BINARY(16) DEFAULT NULL,
+  secreto VARCHAR(32) NOT NULL;
   autoincremental INT AUTO_INCREMENT UNIQUE,
   PRIMARY KEY(id)
 );
